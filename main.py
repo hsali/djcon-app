@@ -1,15 +1,12 @@
 import json
+import sys
 import time
 
-from numpy.linalg import norm
-
-from numpy import dot
-
-from flask import url_for
-
-from flask import redirect
+sys.path.append('/home/shehbaz/Documents/spacy/.env/lib/python2.7/site-packages')
 
 from flask import request
+from numpy import dot
+from numpy.linalg import norm
 
 import flask
 from flask import render_template
@@ -34,19 +31,22 @@ def index():
 @app.route('/api/rw')
 def api_rw():
     if request.method == 'POST':
-        word = request.form("word")
+        word = request.form['word']
+        myDict = {'a': 2, 'b': 3, "user": word}
     else:
-        word = request.args.get("word")
-
-    print(type(word))
-    print(word)
-    t1 = time.time()
-    b = related_words(word)
-    print(len(b))
-    t2 = time.time() - t1
-    print(b)
-    print("Loading time : " + str(load_time))
-    return flask.jsonify({"time_consumed": str(t2), "word": word, "count": len(b), "related_words": b})
+        word = request.args.get('word')
+        myDict = {'a': 2, 'b': 3, "user": word}
+    # print(type(word))
+    # print(word)
+    # t1 = time.time()
+    # b = related_words(u'NASA')
+    # print(len(b))
+    # t2 = time.time() - t1
+    # print(b)
+    # print("Loading time : " + str(load_time))
+    # return flask.jsonify({"time_consumed": str(t2), "word": word, "count": len(b), "related_words": b})
+    # return flask.jsonify({"time_consumed": "2", "word": "NASA", "count": "23", "related_words": "GOOGLE, YAHOO"})
+    return "word : " + word
 
 
 def related_words(word):

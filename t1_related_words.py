@@ -1,6 +1,8 @@
 # https://nicschrading.com/project/Intro-to-NLP-with-spaCy/
 # Set up spaCy
 import time
+import sys
+sys.path.append('/home/shehbaz/Documents/spacy/.env/lib/python2.7/site-packages')
 from spacy.en import English
 
 t1 = time.time()
